@@ -1,4 +1,7 @@
 # a-know
+
+![CircleCI Status](https://circleci.com/gh/a-know/a-know.svg?style=svg)
+
 `a-know` - CLI tool about me (a-know) written in Go.
 
 # DESCRIPTION
