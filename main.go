@@ -10,6 +10,7 @@ import (
 	"github.com/mitchellh/cli"
 )
 
+// CLI is struct for switch stdout / stderr
 type CLI struct {
 	outStream, errStream io.Writer
 }
@@ -19,6 +20,7 @@ func main() {
 	os.Exit(cli.Run(os.Args))
 }
 
+// Run method is select correct command and run
 func (c *CLI) Run(args []string) int {
 	cl := cli.NewCLI("a-know", "0.0.1")
 	cl.Args = args[1:]

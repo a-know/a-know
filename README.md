@@ -1,8 +1,11 @@
 # a-know
+
+![CircleCI Status](https://circleci.com/gh/a-know/a-know.svg?style=svg)
+
 `a-know` - CLI tool about me (a-know) written in Go.
 
 # DESCRIPTION
-`a-know` CLI is tool to show information about me (a-know).
+`a-know` is CLI tool to show information about me (a-know).
 
 I started developing this tool to learn golang and to learn how to release command line tools.
 
@@ -16,7 +19,7 @@ $ go get github.com/a-know/a-know
 
 `$ a-know <command>`
 
-## Availablr commands
+## Available commands
 ### `twitter`
 
 Display a-know's Twitter account name.
