@@ -2,10 +2,15 @@ machine:
   timezone: Asia/Tokyo
   environment:
     CHECKOUT_PATH: $HOME/$CIRCLE_PROJECT_REPONAME
+    GODIST: "go1.7.3.linux-amd64.tar.gz"
   post:
     - >
       echo "export BUILD_VERSION=\"`git --git-dir=${CHECKOUT_PATH}/.git describe --always --dirty`\"" >> ~/.circlerc;
       echo "export BUILD_DATE=\"`date +%FT%T%z`\"" >> ~/.circlerc;
+    - mkdir -p download
+    - test -e download/$GODIST || curl -o download/$GODIST https://storage.googleapis.com/golang/$GODIST
+    - sudo rm -rf /usr/local/go
+    - sudo tar -C /usr/local -xzf download/$GODIST
 
 dependencies:
   pre:
