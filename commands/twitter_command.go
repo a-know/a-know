@@ -1,4 +1,4 @@
-package main
+package commands
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 )
 
 type TwitterCommand struct {
-	outStream, errStream io.Writer
+	OutStream, ErrStream io.Writer
 }
 
 func (c *TwitterCommand) Synopsis() string {
@@ -18,6 +18,6 @@ func (c *TwitterCommand) Help() string {
 }
 
 func (c *TwitterCommand) Run(args []string) int {
-	fmt.Fprintln(c.outStream, "a-know's Twitter account : @a_know")
+	fmt.Fprintln(c.OutStream, "a-know's Twitter account : @a_know")
 	return 0
 }

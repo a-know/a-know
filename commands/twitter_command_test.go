@@ -1,4 +1,4 @@
-package main
+package commands
 
 import (
 	"bytes"
@@ -8,7 +8,7 @@ import (
 
 var outStream = new(bytes.Buffer)
 var errStream = new(bytes.Buffer)
-var target = &TwitterCommand{outStream: outStream, errStream: errStream}
+var target = &TwitterCommand{OutStream: outStream, ErrStream: errStream}
 
 func TestRun(t *testing.T) {
 	args := strings.Split("a-know twitter", " ")

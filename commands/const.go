@@ -1,4 +1,4 @@
-package main
+package commands
 
 const (
 	ExitCodeOK int = iota

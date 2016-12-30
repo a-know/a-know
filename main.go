@@ -5,6 +5,8 @@ import (
 	"io"
 	"os"
 
+	"github.com/a-know/a-know/commands"
+
 	"github.com/mitchellh/cli"
 )
 
@@ -22,7 +24,7 @@ func (c *CLI) Run(args []string) int {
 	cl.Args = args[1:]
 	cl.Commands = map[string]cli.CommandFactory{
 		"twitter": func() (cli.Command, error) {
-			return &TwitterCommand{outStream: c.outStream, errStream: c.errStream}, nil
+			return &commands.TwitterCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
 	}
 
