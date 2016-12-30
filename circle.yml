@@ -1,0 +1,13 @@
+machine:
+  timezone: Asia/Tokyo
+
+dependencies:
+  pre:
+    - go get -u github.com/golang/lint/golint
+
+test:
+  override:
+    - test -z "$(gofmt -s -l . | tee /dev/stderr)"
+    - go vet ./...
+    - test -z "$(golint ./... | tee /dev/stderr)"
+    - go test -race -test.v ./...
