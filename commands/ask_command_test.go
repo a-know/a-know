@@ -6,12 +6,12 @@ import (
 	"testing"
 )
 
-func TestRunTwitter(t *testing.T) {
+func TestRunAsk(t *testing.T) {
 	outStream := new(bytes.Buffer)
 	errStream := new(bytes.Buffer)
-	target := &TwitterCommand{OutStream: outStream, ErrStream: errStream}
+	target := &AskCommand{OutStream: outStream, ErrStream: errStream}
 
-	args := strings.Split("a-know twitter", " ")
+	args := strings.Split("a-know ask", " ")
 
 	if status := target.Run(args); status != ExitCodeOK {
 		t.Errorf("expected %d to eq %d", status, ExitCodeOK)

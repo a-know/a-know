@@ -24,6 +24,7 @@ test:
     - test -z "$(gofmt -s -l . | tee /dev/stderr)"
     - go vet ./...
     - test -z "$(golint ./... | tee /dev/stderr)"
+    - go test -race -cover -test.v ./...
     - go test -race -cover -v -coverprofile=/home/ubuntu/main-coverage.out -coverpkg=./... github.com/a-know/a-know
   post:
     - /home/ubuntu/.go_workspace/bin/goveralls -coverprofile=/home/ubuntu/main-coverage.out -service=circle-ci -repotoken=$COVERALLS_TOKEN

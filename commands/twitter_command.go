@@ -22,6 +22,6 @@ func (c *TwitterCommand) Help() string {
 
 // Run is main method of this command
 func (c *TwitterCommand) Run(args []string) int {
-	fmt.Fprintln(c.OutStream, "a-know's Twitter account : @a_know")
+	fmt.Fprintln(c.OutStream, "@a_know")
 	return 0
 }
