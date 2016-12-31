@@ -13,7 +13,7 @@ func TestRunSubCommandTwitter(t *testing.T) {
 	args := strings.Split("a-know twitter", " ")
 
 	cli.Run(args)
-	expected := fmt.Sprint("a-know's Twitter account : @a_know")
+	expected := fmt.Sprint("@a_know")
 
 	if !strings.Contains(outStream.String(), expected) {
 		t.Errorf("expected %q to eq %q", outStream.String(), expected)
