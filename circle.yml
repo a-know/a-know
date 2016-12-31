@@ -17,11 +17,16 @@ dependencies:
     - go get -u github.com/golang/lint/golint
 
 test:
+  pre:
+    - go get -u github.com/axw/gocov/gocov
+    - go get -u github.com/mattn/goveralls
   override:
     - test -z "$(gofmt -s -l . | tee /dev/stderr)"
     - go vet ./...
     - test -z "$(golint ./... | tee /dev/stderr)"
-    - go test -race -test.v ./...
+    - go test -race -cover -test.v ./... -coverprofile=/home/ubuntu/coverage.out
+  post:
+    - /home/ubuntu/.go_workspace/bin/goveralls -coverprofile=/home/ubuntu/coverage.out -service=circle-ci -repotoken=$COVERALLS_TOKEN
 
 deployment:
   release:
