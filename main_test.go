@@ -45,3 +45,16 @@ func TestRunSubCommandHomepage(t *testing.T) {
 		t.Errorf("expected %q to eq %q", outStream.String(), expected)
 	}
 }
+
+func TestRunSubCommandGithub(t *testing.T) {
+	outStream, errStream := new(bytes.Buffer), new(bytes.Buffer)
+	cli := &CLI{outStream: outStream, errStream: errStream}
+	args := strings.Split("a-know github", " ")
+
+	cli.Run(args)
+	expected := fmt.Sprint("https://github.com/a-know")
+
+	if !strings.Contains(outStream.String(), expected) {
+		t.Errorf("expected %q to eq %q", outStream.String(), expected)
+	}
+}
