@@ -43,6 +43,9 @@ func (c *CLI) Run(args []string) int {
 		"photo": func() (cli.Command, error) {
 			return &commands.PhotoCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
+		"hatena": func() (cli.Command, error) {
+			return &commands.HatenaCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+		},
 	}
 
 	exitStatus, err := cl.Run()

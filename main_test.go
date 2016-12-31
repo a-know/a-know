@@ -84,3 +84,16 @@ func TestRunSubCommandPhoto(t *testing.T) {
 		t.Errorf("expected %q to eq %q", outStream.String(), expected)
 	}
 }
+
+func TestRunSubCommandHatena(t *testing.T) {
+	outStream, errStream := new(bytes.Buffer), new(bytes.Buffer)
+	cli := &CLI{outStream: outStream, errStream: errStream}
+	args := strings.Split("a-know hatena", " ")
+
+	cli.Run(args)
+	expected := fmt.Sprint("http://profile.hatena.ne.jp/a-know/")
+
+	if !strings.Contains(outStream.String(), expected) {
+		t.Errorf("expected %q to eq %q", outStream.String(), expected)
+	}
+}
