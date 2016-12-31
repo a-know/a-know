@@ -30,3 +30,66 @@ Display a-know's Twitter account name.
 $ a-know twitter
 a-know's Twitter account : @a_know
 ```
+
+### `blog`
+
+Display a-know's blog URL.
+
+```
+$ a-know blog
+http://blog.a-know.me
+```
+
+### `homepage`
+
+Display a-know's homepage (portfolio page) URL.
+
+```
+$ a-know homepage
+https://a-know.me/
+```
+
+### `github`
+
+Display a-know's GitHub Account page.
+
+```
+$ a-know github
+https://github.com/a-know
+```
+
+### `presentation`
+
+Display a-know's slideshare URL.
+
+```
+$ a-know presentation
+http://www.slideshare.net/aknow3373
+```
+
+### `photo`
+
+Display a-know's photograph blog URL.
+
+```
+$ a-know photo
+http://photos.a-know.me/
+```
+
+### `hatena`
+
+Display a-know's Hatena profile page URL.
+
+```
+$ a-know hatena
+http://profile.hatena.ne.jp/a-know/
+```
+
+### `ask`
+
+Display a-know's ask.fm page URL.
+
+```
+$ a-know ask
+http://ask.fm/a_know
+```
