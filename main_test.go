@@ -71,3 +71,16 @@ func TestRunSubCommandPresentation(t *testing.T) {
 		t.Errorf("expected %q to eq %q", outStream.String(), expected)
 	}
 }
+
+func TestRunSubCommandPhoto(t *testing.T) {
+	outStream, errStream := new(bytes.Buffer), new(bytes.Buffer)
+	cli := &CLI{outStream: outStream, errStream: errStream}
+	args := strings.Split("a-know photo", " ")
+
+	cli.Run(args)
+	expected := fmt.Sprint("http://photos.a-know.me/")
+
+	if !strings.Contains(outStream.String(), expected) {
+		t.Errorf("expected %q to eq %q", outStream.String(), expected)
+	}
+}

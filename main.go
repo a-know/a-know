@@ -40,6 +40,9 @@ func (c *CLI) Run(args []string) int {
 		"presentation": func() (cli.Command, error) {
 			return &commands.PresentationCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
+		"photo": func() (cli.Command, error) {
+			return &commands.PhotoCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+		},
 	}
 
 	exitStatus, err := cl.Run()
