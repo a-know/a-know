@@ -1,6 +1,7 @@
 # a-know
 
 ![CircleCI Status](https://circleci.com/gh/a-know/a-know.svg?style=svg)
+[![Coverage Status](https://coveralls.io/repos/github/a-know/a-know/badge.svg?branch=master)](https://coveralls.io/github/a-know/a-know?branch=master)
 
 `a-know` - CLI tool about me (a-know) written in Go.
 
