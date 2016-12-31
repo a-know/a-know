@@ -31,6 +31,9 @@ func (c *CLI) Run(args []string) int {
 		"blog": func() (cli.Command, error) {
 			return &commands.BlogCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
+		"homepage": func() (cli.Command, error) {
+			return &commands.HomepageCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+		},
 	}
 
 	exitStatus, err := cl.Run()

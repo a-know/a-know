@@ -32,3 +32,16 @@ func TestRunSubCommandBlog(t *testing.T) {
 		t.Errorf("expected %q to eq %q", outStream.String(), expected)
 	}
 }
+
+func TestRunSubCommandHomepage(t *testing.T) {
+	outStream, errStream := new(bytes.Buffer), new(bytes.Buffer)
+	cli := &CLI{outStream: outStream, errStream: errStream}
+	args := strings.Split("a-know homepage", " ")
+
+	cli.Run(args)
+	expected := fmt.Sprint("https://a-know.me/")
+
+	if !strings.Contains(outStream.String(), expected) {
+		t.Errorf("expected %q to eq %q", outStream.String(), expected)
+	}
+}
