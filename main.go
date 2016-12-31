@@ -28,6 +28,9 @@ func (c *CLI) Run(args []string) int {
 		"twitter": func() (cli.Command, error) {
 			return &commands.TwitterCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
+		"blog": func() (cli.Command, error) {
+			return &commands.BlogCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+		},
 	}
 
 	exitStatus, err := cl.Run()
