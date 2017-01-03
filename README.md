@@ -28,7 +28,7 @@ Display a-know's Twitter account name.
 
 ```
 $ a-know twitter
-a-know's Twitter account : @a_know
+@a_know
 ```
 
 ### `blog`
