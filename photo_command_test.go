@@ -1,4 +1,4 @@
-package commands
+package main
 
 import (
 	"bytes"
@@ -6,12 +6,12 @@ import (
 	"testing"
 )
 
-func TestRunHomepage(t *testing.T) {
+func TestRunPhoto(t *testing.T) {
 	outStream := new(bytes.Buffer)
 	errStream := new(bytes.Buffer)
-	target := &HomepageCommand{OutStream: outStream, ErrStream: errStream}
+	target := &PhotoCommand{OutStream: outStream, ErrStream: errStream}
 
-	args := strings.Split("a-know homepage", " ")
+	args := strings.Split("a-know photo", " ")
 
 	if status := target.Run(args); status != ExitCodeOK {
 		t.Errorf("expected %d to eq %d", status, ExitCodeOK)

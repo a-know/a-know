@@ -5,8 +5,6 @@ import (
 	"io"
 	"os"
 
-	"github.com/a-know/a-know/commands"
-
 	"github.com/mitchellh/cli"
 )
 
@@ -26,28 +24,28 @@ func (c *CLI) Run(args []string) int {
 	cl.Args = args[1:]
 	cl.Commands = map[string]cli.CommandFactory{
 		"twitter": func() (cli.Command, error) {
-			return &commands.TwitterCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+			return &TwitterCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
 		"blog": func() (cli.Command, error) {
-			return &commands.BlogCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+			return &BlogCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
 		"homepage": func() (cli.Command, error) {
-			return &commands.HomepageCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+			return &HomepageCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
 		"github": func() (cli.Command, error) {
-			return &commands.GithubCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+			return &GithubCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
 		"presentation": func() (cli.Command, error) {
-			return &commands.PresentationCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+			return &PresentationCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
 		"photo": func() (cli.Command, error) {
-			return &commands.PhotoCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+			return &PhotoCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
 		"hatena": func() (cli.Command, error) {
-			return &commands.HatenaCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+			return &HatenaCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
 		"ask": func() (cli.Command, error) {
-			return &commands.AskCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+			return &AskCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
 	}
 

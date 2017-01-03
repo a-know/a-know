@@ -1,4 +1,4 @@
-package commands
+package main
 
 // for exitcode consts
 const (

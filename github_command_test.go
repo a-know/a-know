@@ -1,4 +1,4 @@
-package commands
+package main
 
 import (
 	"bytes"
@@ -6,12 +6,12 @@ import (
 	"testing"
 )
 
-func TestRunAsk(t *testing.T) {
+func TestRunGithub(t *testing.T) {
 	outStream := new(bytes.Buffer)
 	errStream := new(bytes.Buffer)
-	target := &AskCommand{OutStream: outStream, ErrStream: errStream}
+	target := &GithubCommand{OutStream: outStream, ErrStream: errStream}
 
-	args := strings.Split("a-know ask", " ")
+	args := strings.Split("a-know github", " ")
 
 	if status := target.Run(args); status != ExitCodeOK {
 		t.Errorf("expected %d to eq %d", status, ExitCodeOK)
