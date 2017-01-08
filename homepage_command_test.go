@@ -24,6 +24,35 @@ func TestRunHomepage(t *testing.T) {
 	}
 }
 
+func TestRunHomepageWithAdminFlag(t *testing.T) {
+	outStream := new(bytes.Buffer)
+	errStream := new(bytes.Buffer)
+	target := &HomepageCommand{OutStream: outStream, ErrStream: errStream}
+
+	args := strings.Split("a-know homepage --admin", " ")
+
+	if status := target.Run(args); status != ExitCodeOK {
+		t.Errorf("expected %d to eq %d", status, ExitCodeOK)
+	}
+
+	expected := fmt.Sprint("https://a-know.me/?admin=true\n")
+	if !strings.EqualFold(outStream.String(), expected) {
+		t.Errorf("expected %q to eq %q", outStream.String(), expected)
+	}
+}
+
+func TestRunHomepageWithInvalidAdminFlag(t *testing.T) {
+	outStream := new(bytes.Buffer)
+	errStream := new(bytes.Buffer)
+	target := &HomepageCommand{OutStream: outStream, ErrStream: errStream}
+
+	args := strings.Split("a-know homepage --admi", " ")
+
+	if status := target.Run(args); status != ExitCodeError {
+		t.Errorf("expected %d to eq %d", status, ExitCodeError)
+	}
+}
+
 func TestSynopsisHomepage(t *testing.T) {
 	outStream := new(bytes.Buffer)
 	errStream := new(bytes.Buffer)
