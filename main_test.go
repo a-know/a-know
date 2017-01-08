@@ -20,6 +20,19 @@ func TestRunSubCommandTwitter(t *testing.T) {
 	}
 }
 
+func TestRunSubCommandTwitterWithUrlFlag(t *testing.T) {
+	outStream, errStream := new(bytes.Buffer), new(bytes.Buffer)
+	cli := &CLI{outStream: outStream, errStream: errStream}
+	args := strings.Split("a-know twitter --url", " ")
+
+	cli.Run(args)
+	expected := fmt.Sprint("https://twitter.com/a_know")
+
+	if !strings.Contains(outStream.String(), expected) {
+		t.Errorf("expected %q to eq %q", outStream.String(), expected)
+	}
+}
+
 func TestRunSubCommandBlog(t *testing.T) {
 	outStream, errStream := new(bytes.Buffer), new(bytes.Buffer)
 	cli := &CLI{outStream: outStream, errStream: errStream}
