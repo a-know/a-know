@@ -46,6 +46,19 @@ func TestRunSubCommandHomepage(t *testing.T) {
 	}
 }
 
+func TestRunSubCommandHomepageWithAdminFlag(t *testing.T) {
+	outStream, errStream := new(bytes.Buffer), new(bytes.Buffer)
+	cli := &CLI{outStream: outStream, errStream: errStream}
+	args := strings.Split("a-know homepage --admin", " ")
+
+	cli.Run(args)
+	expected := fmt.Sprint("https://a-know.me/?admin=true")
+
+	if !strings.Contains(outStream.String(), expected) {
+		t.Errorf("expected %q to eq %q", outStream.String(), expected)
+	}
+}
+
 func TestRunSubCommandGithub(t *testing.T) {
 	outStream, errStream := new(bytes.Buffer), new(bytes.Buffer)
 	cli := &CLI{outStream: outStream, errStream: errStream}

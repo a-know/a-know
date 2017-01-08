@@ -12,7 +12,7 @@ func TestRunHomepage(t *testing.T) {
 	errStream := new(bytes.Buffer)
 	target := &HomepageCommand{OutStream: outStream, ErrStream: errStream}
 
-	args := strings.Split("a-know homepage", " ")
+	args := strings.Split("", " ")
 
 	if status := target.Run(args); status != ExitCodeOK {
 		t.Errorf("expected %d to eq %d", status, ExitCodeOK)
@@ -29,7 +29,7 @@ func TestRunHomepageWithAdminFlag(t *testing.T) {
 	errStream := new(bytes.Buffer)
 	target := &HomepageCommand{OutStream: outStream, ErrStream: errStream}
 
-	args := strings.Split("a-know homepage --admin", " ")
+	args := strings.Split("--admin", " ")
 
 	if status := target.Run(args); status != ExitCodeOK {
 		t.Errorf("expected %d to eq %d", status, ExitCodeOK)
@@ -46,7 +46,7 @@ func TestRunHomepageWithInvalidAdminFlag(t *testing.T) {
 	errStream := new(bytes.Buffer)
 	target := &HomepageCommand{OutStream: outStream, ErrStream: errStream}
 
-	args := strings.Split("a-know homepage --admi", " ")
+	args := strings.Split("--admi", " ")
 
 	if status := target.Run(args); status != ExitCodeError {
 		t.Errorf("expected %d to eq %d", status, ExitCodeError)
