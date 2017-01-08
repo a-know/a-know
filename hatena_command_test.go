@@ -12,7 +12,7 @@ func TestRunHatena(t *testing.T) {
 	errStream := new(bytes.Buffer)
 	target := &HatenaCommand{OutStream: outStream, ErrStream: errStream}
 
-	args := strings.Split("a-know hatena", " ")
+	args := strings.Split("", " ")
 
 	if status := target.Run(args); status != ExitCodeOK {
 		t.Errorf("expected %d to eq %d", status, ExitCodeOK)

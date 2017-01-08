@@ -12,7 +12,7 @@ func TestRunBlog(t *testing.T) {
 	errStream := new(bytes.Buffer)
 	target := &BlogCommand{OutStream: outStream, ErrStream: errStream}
 
-	args := strings.Split("a-know blog", " ")
+	args := strings.Split("", " ")
 
 	if status := target.Run(args); status != ExitCodeOK {
 		t.Errorf("expected %d to eq %d", status, ExitCodeOK)

@@ -28,10 +28,8 @@ func (c *HomepageCommand) Run(args []string) int {
 	flags := flag.NewFlagSet("homepage", flag.ContinueOnError)
 	flags.BoolVar(&admin, "admin", false, "Get URL for admin")
 
-	if len(args) > 2 {
-		if err := flags.Parse(args[2:]); err != nil {
-			return 1
-		}
+	if err := flags.Parse(args); err != nil {
+		return 1
 	}
 
 	homepageURL := "https://a-know.me/"
