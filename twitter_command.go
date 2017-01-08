@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io"
 )
@@ -22,6 +23,23 @@ func (c *TwitterCommand) Help() string {
 
 // Run is main method of this command
 func (c *TwitterCommand) Run(args []string) int {
-	fmt.Fprintln(c.OutStream, "@a_know")
+	var url bool
+
+	flags := flag.NewFlagSet("twitter", flag.ContinueOnError)
+	flags.BoolVar(&url, "url", false, "Get account page URL")
+
+	if len(args) > 2 {
+		if err := flags.Parse(args[2:]); err != nil {
+			return 1
+		}
+	}
+
+	output := "@a_know"
+
+	if url {
+		output = "https://twitter.com/a_know"
+	}
+
+	fmt.Fprintln(c.OutStream, output)
 	return 0
 }
