@@ -24,6 +24,35 @@ func TestRunTwitter(t *testing.T) {
 	}
 }
 
+func TestRunTwitterWithUrlFlag(t *testing.T) {
+	outStream := new(bytes.Buffer)
+	errStream := new(bytes.Buffer)
+	target := &TwitterCommand{OutStream: outStream, ErrStream: errStream}
+
+	args := strings.Split("a-know twitter --url", " ")
+
+	if status := target.Run(args); status != ExitCodeOK {
+		t.Errorf("expected %d to eq %d", status, ExitCodeOK)
+	}
+
+	expected := fmt.Sprint("https://twitter.com/a_know")
+	if !strings.Contains(outStream.String(), expected) {
+		t.Errorf("expected %q to eq %q", outStream.String(), expected)
+	}
+}
+
+func TestRunTwitterWithInvalidUrlFlag(t *testing.T) {
+	outStream := new(bytes.Buffer)
+	errStream := new(bytes.Buffer)
+	target := &TwitterCommand{OutStream: outStream, ErrStream: errStream}
+
+	args := strings.Split("a-know twitter --urll", " ")
+
+	if status := target.Run(args); status != ExitCodeError {
+		t.Errorf("expected %d to eq %d", status, ExitCodeError)
+	}
+}
+
 func TestSynopsisTwitter(t *testing.T) {
 	outStream := new(bytes.Buffer)
 	errStream := new(bytes.Buffer)

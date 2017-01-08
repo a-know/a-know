@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"io"
 )
@@ -22,6 +23,23 @@ func (c *HomepageCommand) Help() string {
 
 // Run is main method of this command
 func (c *HomepageCommand) Run(args []string) int {
-	fmt.Fprintln(c.OutStream, "https://a-know.me/")
+	var admin bool
+
+	flags := flag.NewFlagSet("homepage", flag.ContinueOnError)
+	flags.BoolVar(&admin, "admin", false, "Get URL for admin")
+
+	if len(args) > 2 {
+		if err := flags.Parse(args[2:]); err != nil {
+			return 1
+		}
+	}
+
+	homepageURL := "https://a-know.me/"
+
+	if admin {
+		homepageURL = homepageURL + "?admin=true"
+	}
+
+	fmt.Fprintln(c.OutStream, homepageURL)
 	return 0
 }
