@@ -12,7 +12,7 @@ func TestRunGithub(t *testing.T) {
 	errStream := new(bytes.Buffer)
 	target := &GithubCommand{OutStream: outStream, ErrStream: errStream}
 
-	args := strings.Split("a-know github", " ")
+	args := strings.Split("", " ")
 
 	if status := target.Run(args); status != ExitCodeOK {
 		t.Errorf("expected %d to eq %d", status, ExitCodeOK)
