@@ -31,6 +31,13 @@ $ a-know twitter
 @a_know
 ```
 
+Use `--url` option, you can get twitter account page URL.
+
+```
+$ a-know twitter --url
+https://twitter.com/a_know
+```
+
 ### `blog`
 
 Display a-know's blog URL.
