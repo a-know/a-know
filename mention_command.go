@@ -42,7 +42,8 @@ func (c *MentionCommand) Run(args []string) int {
 	webhookURL := "https://hooks.slack.com/services/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"
 	channel := "a-know-cli"
 	message := args[0]
-	replyToURL := os.Getenv("A_KNOW_REPLY_TO")
+	replyToURL := os.Getenv("A_KNOW_REPLY_TO_WEBHOOK")
+	replyToChannel := os.Getenv("A_KNOW_REPLY_TO_CHANNEL")
 
 	if replyToURL != "" {
 		r := regexp.MustCompile(`hooks.slack.com/services`)
@@ -50,7 +51,13 @@ func (c *MentionCommand) Run(args []string) int {
 			fmt.Fprintln(c.OutStream, "error : Only slack's incoming Webhook URL can be specified as a environment variable `A_KNOW_REPLY_TO` .")
 			return 1
 		}
-		message = fmt.Sprintf("%s (Reply to : %s )", message, replyToURL)
+
+		if replyToChannel == "" {
+			fmt.Fprintln(c.OutStream, "error : If you need reply from a-know, A_KNOW_REPLY_TO_WEBHOOK and A_KNOW_REPLY_TO_CHANNEL are both required.")
+			return 1
+		}
+
+		message = fmt.Sprintf("%s\n(Reply to : %s @ %s )", message, replyToURL, replyToChannel)
 	}
 
 	jsonStr := `{"channel":"` + channel + `","username":"` + name + `","text":"` + message + `"}`
