@@ -17,7 +17,7 @@ type MentionCommand struct {
 
 // Synopsis is short-message for this command
 func (c *MentionCommand) Synopsis() string {
-	return "Display a-know's Mention account name"
+	return "You can send a message to a-know's slack channel."
 }
 
 // Help is content of help for this command
