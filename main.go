@@ -23,6 +23,9 @@ func (c *CLI) Run(args []string) int {
 	cl := cli.NewCLI("a-know", "0.0.1")
 	cl.Args = args[1:]
 	cl.Commands = map[string]cli.CommandFactory{
+		"mention": func() (cli.Command, error) {
+			return &MentionCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
+		},
 		"twitter": func() (cli.Command, error) {
 			return &TwitterCommand{OutStream: c.outStream, ErrStream: c.errStream}, nil
 		},
