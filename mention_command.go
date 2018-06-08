@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"os"
+	"regexp"
 )
 
 // MentionCommand is CLI struct for `mention` sub-command
@@ -25,7 +27,7 @@ func (c *MentionCommand) Help() string {
 
 // Run is main method of this command
 func (c *MentionCommand) Run(args []string) int {
-	flags := flag.NewFlagSet("twitter", flag.ContinueOnError)
+	flags := flag.NewFlagSet("mention", flag.ContinueOnError)
 
 	if err := flags.Parse(args); err != nil {
 		return 1
@@ -40,6 +42,16 @@ func (c *MentionCommand) Run(args []string) int {
 	webhookURL := "https://hooks.slack.com/services/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"
 	channel := "a-know-cli"
 	message := args[0]
+	replyToURL := os.Getenv("A_KNOW_REPLY_TO")
+
+	if replyToURL != "" {
+		r := regexp.MustCompile(`hooks.slack.com/services`)
+		if !r.MatchString(replyToURL) {
+			fmt.Fprintln(c.OutStream, "error : Only slack's incoming Webhook URL can be specified as a environment variable `A_KNOW_REPLY_TO` .")
+			return 1
+		}
+		message = fmt.Sprintf("%s (Reply to : %s )", message, replyToURL)
+	}
 
 	jsonStr := `{"channel":"` + channel + `","username":"` + name + `","text":"` + message + `"}`
 
